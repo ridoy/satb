@@ -97,6 +97,8 @@ function showGraph(data, selectedRating) {
       type: 'bar',
       data: chartData,
       options: {
+          'aspectRatio': 1.5,
+          'maintainAspectRatio': false,
           'responsive': true,
           'reverse': true,
           'plugins': {
