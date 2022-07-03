@@ -19,6 +19,7 @@ console.log("Script loaded");
 const buttons = document.querySelectorAll(".preference-button");
 const welcomeMenu = document.querySelector("#welcome-menu");
 const voteMenu = document.querySelector("#vote-menu");
+const scale = document.querySelector("#scale");
 let preference = null;
 buttons.forEach((button) => {
     button.addEventListener("click", function(e) {
@@ -28,5 +29,13 @@ buttons.forEach((button) => {
         welcomeMenu.remove();
         // Populate page
         voteMenu.style.display = "block";
+        
     })
 });
+
+voteButton.addEventListener("click", function(e) {
+    // get selected rating
+    // update db
+    // show results
+});
+
