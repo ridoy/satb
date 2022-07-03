@@ -1,6 +1,7 @@
 'use strict';
 require('dotenv').config()
 
+const path = require('path');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -17,6 +18,8 @@ const prefix = "!";
 pgClient.connect();
 
 
+app.use(express.static('public'));
+
 
 /*
 `SELECT * from prompts LIMIT 1`;
@@ -32,7 +35,7 @@ pgClient.query(query, values, (err, res) => {
 
 
 app.get('/', function(req, res) {
-    res.send("hello world");
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
 app.listen(port, () => {
