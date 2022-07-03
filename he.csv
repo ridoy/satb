@@ -1,0 +1,52 @@
+He's a 10 but but kisses my hand when we meet.
+He's a 10 but but he only fucks to crazy frog.
+He's a 10 but but he's annoying.
+He's a 10 but but has the same love language as me.
+He's a 10 but he has 7 sisters who constantly put him down and one day at a family party he straight up loses it and smashes a sliding glass door with a hammer.
+He's a 10 but but has 40 tweets about him on a burner acc made from a cult HE made about some random german guy's wikifeet.
+He's a 10 but but he's not a lesbian.
+He's a 10 but like he's actually a 10 there's no buts.
+He's a 10 but he can't open water bottles without biting them.
+He's a 10 but but he doesn't like The Weeknd.
+He's a 10 but his favorite movie is The Wolf of Wall Street.
+He's a 10 but he only communicates with you after 10pm.
+He's a 10 but he's a racist.
+He’s a 10 but he bites his ice cream.
+He’s a 10 but likes explaining complex stuff and ends it with “its physics”.
+He's a 10 but he dances on TikTok.
+He's a 10 but he roasts you every chance he gets.
+he’s a 10 but calls everything "based" or "cringe".
+He's a 10 but he's a cat person.
+He's a 10 but he cries when his favorite sports team loses.
+He's a 10 but his car horn soudns girly.
+He's a 10 but he talks too much.
+He's a 10 but he watches anime in sub.
+He's a 10 but he has more female friends than you do.
+He's a 10 but doesn't respect his mom.
+He's a 2 but he lives in a pineapple under the sea.
+He's a 10 but he follows more than a few instagram models.
+He's a 10 but he's an absolute idiot.
+He's a 6 but he's British.
+He’s a 10 but doesn’t get on his hands and knees to bark like a dog when you say so.
+He's a 10 but he says he's 6'1 when he's 5'11.
+
+insert into prompts (text, pref, defaultrating) values('but he lives in a pineapple under the sea.', 'he', 2);
+insert into prompts (text, pref, defaultrating) values('but he\'s British', 'he', 6);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('', 'he', 10);

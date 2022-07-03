@@ -1,0 +1,90 @@
+she's a 10 but she talks to animals like they're gonna respond.
+She’s a 10 but she always rewatches her highlights and stories just to look at herself.
+she’s a 10 but she’s obsessed with bella hadid.
+She’s a 10 but she’s obsessed with Justin Bieber even as an adult.
+she’s a 10 but her pee isn’t clear.
+she’s a 10 but she can recognize a one direction song from the first 5 seconds of the intro.
+she’s a 10 but she rewatches gossip girl and vampire diaries and refuses to watch a new show.
+She’s a 10 but she wants you to feed her other 3 kids.
+She’s a 10 but she listens to Bad Bunny.
+she's a 10 but she spends all her money on plushies.
+she’s a 10 but she calls you bro.
+She’s a 10 but she got shrines in her house and talks to dead people.
+She's a 10 but laughs when people die in movies.
+She's a 10 but she thinks she's a fairy living in an enchanted forest.
+she’s a 10 but celebrates the 4th of july.
+She’s a 10 but her voice sounds like Hitler's.
+She’s a 10 but her dead relatives she brought back to life are trying to kill you.
+She’s a 10 but she knows the dj personally.
+She's a 10 but she uses light mode.
+She's a 10 but she be reposting Instagram infographics.
+She's a 10 but she's racist.
+She's a 10 but she likes pineapple on pizza.
+She's a 10 but she hasn't deleted the other guy's birth chart yet.
+She's a 10 but she can't park.
+
+She's a 10 but thinks Friends is better than Seinfeld.
+She's a 10 but she isn't forklift certified.
+She's a 6 but thinks your music is good.
+She's a 8 but speaks in third person.
+She's a 9 but says she's a "burnt out gifted kid".
+She’s a 5 but she’s a Seahawks fan.
+she's a 7 but she loves drake.
+
+insert into prompts (text, pref, defaultrating) values('but she talks to animals like they're gonna respond.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she always rewatches her highlights and stories just to look at herself.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she’s obsessed with bella hadid.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she’s obsessed with Justin Bieber even as an adult.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but her pee isn’t clear.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she can recognize a one direction song from the first 5 seconds of the intro.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she rewatches gossip girl and vampire diaries and refuses to watch a new show.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she wants you to feed her other 3 kids.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she listens to Bad Bunny.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she spends all her money on plushies.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she calls you bro.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she got shrines in her house and talks to dead people.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but laughs when people die in movies.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she thinks she's a fairy living in an enchanted forest.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but celebrates the 4th of july.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but her voice sounds like Hitler's.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but her dead relatives she brought back to life are trying to kill you.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she knows the dj personally.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she uses light mode.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she be reposting Instagram infographics.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she's racist.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she likes pineapple on pizza.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she hasn't deleted the other guy's birth chart yet.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('but she can't park.', 'she', '10');
+
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('', 'she', '10');
+

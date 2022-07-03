@@ -29,18 +29,40 @@ app.get('/', function(req, res) {
 })
 
 app.get('/prompt', function(req, res) {
-    let query = `SELECT * from prompts LIMIT 1`;
-    pgClient.query(query, (err, data) => {
+    let preference = req.query.pref;
+    if (!preference) {
+        console.log("[ERROR] For some reason req.query.pref was not defined.")
+    }
+    let query = `select * from prompts where pref=$1 order by random() limit 1;`; // I know this is bad but the database is small atm.
+    let values = [preference];
+ 
+    if (preference === "both") {
+        query = `select * from prompts order by random() limit 1;`;
+        values = [];
+    }
+    pgClient.query(query, values, (err, data) => {
         if (err) throw err;
-        res.send(data.rows);
+        return res.send(data.rows);
     });
 });
 
 app.get('/vote', function(req, res) {
-    let query = `SELECT * from prompts LIMIT 1`;
-    pgClient.query(query, (err, data) => {
+    let promptId = req.query.promptId;
+    let rating = req.query.rating;
+    let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; 
+    if (!ratings.includes(rating)) { // pg doesn't support col names as parameters, so sanitize the input manually
+        console.log(`[ERROR] There was a problem with voting at ${req.originalUrl}. Invalid rating ${rating} was provided.`);
+        return res.status(500).send("There was a problem with your request, please try again later.");
+    }
+    if (!promptId || !rating) {
+        console.log(`[ERROR] There was a problem with voting at ${req.originalUrl}. Either promptId or rating are undefined: ${promptId} ${rating}`);
+        return res.status(500).send("There was a problem with your request, please try again later.");
+    }
+    let query = `UPDATE prompts set "${rating}" = "${rating}" + 1 where id=$1`;
+    let values = [promptId];
+    pgClient.query(query, values, (err, data) => {
         if (err) throw err;
-        res.send(data.rows);
+        return res.send(data);
     });
 });
 

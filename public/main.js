@@ -14,23 +14,27 @@ console.log("Script loaded");
 // submit your own prompt
 //   server: store prompt
 // show graphs
-
-
-const prefButtons = document.querySelectorAll(".preference-button");
+// scrape twitter for starter data
+const header = document.querySelector(".header > h1");
+const scale = document.querySelector("#scale");
+const prompt = document.querySelector("#prompt > h1");
 const welcomeMenu = document.querySelector("#welcome-menu");
 const voteMenu = document.querySelector("#vote-menu");
-const scale = document.querySelector("#scale");
-const voteButtons = document.querySelector(".vote-button");
-const header = document.querySelector(".header > h1");
-const prompt = document.querySelector("#prompt > h1");
+const prefButtons = document.querySelectorAll(".preference-button");
+const voteButtons = document.querySelectorAll(".vote-button");
+const nextButton = document.querySelector(".next-button");
 
 let preference = null;
+let currentPromptId = null;
+let currentPromptData = null;
+let chart = null;
 
 prefButtons.forEach((prefButton) => {
     prefButton.addEventListener("click", function(e) {
         preference = e.target.value || "both";
-        updateHeader();
+        loadPrompt();
         // Load example from DB
+        loadPrompt();
         // Clear page
         welcomeMenu.remove();
         // Populate page
@@ -43,15 +47,127 @@ voteButtons.forEach((voteButton) => {
         let promptId = currentPromptId;
         let selectedRating = e.target.value;
         var xhttp = new XMLHttpRequest();
+        nextButton.style.display = "block";
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // Confirmation message, go to next
-                
+                // Confirmation message, show next
+                hideVoteButtons();
+                showGraph(currentPromptData, selectedRating);
             }
+            // TODO handle error
         };
-        xhttp.open("GET", `/vote?promptId=${promotId}&rating=${selectedRating}`, true);
+        xhttp.open("GET", `/vote?promptId=${promptId}&rating=${selectedRating}`, true);
         xhttp.send();
     });
+});
+
+function hideVoteButtons() {
+    voteButtons.forEach((voteButton) => {
+        voteButton.style.display = "none";
+    })
+}
+
+
+function showVoteButtons() {
+    voteButtons.forEach((voteButton) => {
+        voteButton.style.display = "inline-block";
+    })
+}
+
+function showGraph(data, selectedRating) {
+    // document.getElementById("chart").display = "block";
+    let ratings = [
+        '10', '9', '8', '7',
+        '6',  '5', '4', '3',
+        '2',  '1', '0'
+      ];
+    let counts = ratings.map((rating) => data[rating]);
+    counts[Math.abs(parseInt(selectedRating) - 10)] += 1; // incremenet selected rating to reflect new vote
+    console.log(counts);
+    const chartData = {
+      labels: ratings,
+      datasets: [{
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: counts,
+      }]
+    };
+  
+    const config = {
+      type: 'bar',
+      data: chartData,
+      options: {
+          'responsive': true,
+          'reverse': true,
+          'plugins': {
+              'legend': {
+                  'display': false
+              },
+              title: {
+                  display: true,
+                  color: "#000",
+                  text: "Here's what the people say:",
+                  font: {
+                      size: 20,
+                      family: "Patrick Hand"
+                  }
+              }
+          },
+          'scales': {
+            x: {
+                title: { 
+                    display: true,
+                    text: "Rating",
+                    color: "#000",
+                    font: {
+                        size: 20,
+                        family: "Patrick Hand"
+                    }
+                },
+                grid: {
+                    display:false
+                },
+                ticks: {
+                    color: "#000",
+                    font: {
+                        size: 20,
+                        family: "Patrick Hand"
+                    }
+                }
+            },
+            y: {
+                title: {
+                    color: "#000",
+                    display: true,
+                    text: "Number of votes",
+                    font: {
+                        size: 20,
+                        family: "Patrick Hand"
+                    }
+                },
+                grid: {
+                    display:false
+                },
+                ticks: {
+                    color: "#000",
+                    font: {
+                        size: 20,
+                        family: "Patrick Hand"
+                    }
+                }
+            }
+          }
+      }
+    };
+    chart = new Chart(
+        document.getElementById('chart'),
+        config
+    );
+}
+
+nextButton.addEventListener("click", (e) => {
+    chart.destroy();
+    loadPrompt();
 });
 
 
@@ -60,12 +176,17 @@ function updateHeader(gender, defaultRating) {
 }
 
 function loadPrompt() {
+    nextButton.style.display = "none";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(xhttp.responseText)[0];
-            let text = data.text; 
+            currentPromptData = data;
+            let text = data.text;
+            currentPromptId = data.id;
             updateHeader(data.pref, data.defaultrating);
+            showVoteButtons();
+            //document.getElementById("chart").display = "none";
             prompt.innerText = text;
         }
     };
