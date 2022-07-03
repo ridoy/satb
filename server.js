@@ -38,6 +38,10 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
+app.get('/prompt', function(req, res) {
+    res.send("Hello world");
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

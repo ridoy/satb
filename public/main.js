@@ -20,6 +20,7 @@ const buttons = document.querySelectorAll(".preference-button");
 const welcomeMenu = document.querySelector("#welcome-menu");
 const voteMenu = document.querySelector("#vote-menu");
 const scale = document.querySelector("#scale");
+const voteButton = document.querySelector(".vote-button");
 let preference = null;
 buttons.forEach((button) => {
     button.addEventListener("click", function(e) {
@@ -37,5 +38,13 @@ voteButton.addEventListener("click", function(e) {
     // get selected rating
     // update db
     // show results
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(xhttp.responseText);
+        }
+    };
+    xhttp.open("GET", "/prompt", true);
+    xhttp.send();
 });
 
