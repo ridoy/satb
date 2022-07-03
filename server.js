@@ -4,7 +4,7 @@ require('dotenv').config()
 const path = require('path');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 const pg = require('pg');
 const pgClient = new pg.Client({
