@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Patrick+Hand&display=swap');
 
 body {
+    margin-top: 40px;
     font-family: "Patrick Hand", sans-serif;
     background: pink;
 }
@@ -58,4 +59,12 @@ cursor: pointer;
 
 #scale {
     text-align: center;
+}
+
+label {
+    font-size: 24px;
+}
+
+.vote-button {
+    display: inline-block;
 }
