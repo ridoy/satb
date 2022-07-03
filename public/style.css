@@ -51,3 +51,11 @@ cursor: pointer;
 #vote-menu {
     display: none;
 }
+
+#prompt {
+    text-align: center;
+}
+
+#scale {
+    text-align: center;
+}

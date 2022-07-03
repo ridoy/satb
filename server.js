@@ -39,7 +39,11 @@ app.get('/', function(req, res) {
 })
 
 app.get('/prompt', function(req, res) {
-    res.send("Hello world");
+    let query = `SELECT * from prompts LIMIT 1`;
+    pgClient.query(query, (err, data) => {
+        if (err) throw err;
+        res.send(data.rows);
+    });
 })
 
 app.listen(port, () => {

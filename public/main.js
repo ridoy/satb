@@ -16,35 +16,50 @@
 console.log("Script loaded");
 
 
+// TODO
+// submit your own prompt
+//   server: store prompt
+// show graphs
+
+
 const buttons = document.querySelectorAll(".preference-button");
 const welcomeMenu = document.querySelector("#welcome-menu");
 const voteMenu = document.querySelector("#vote-menu");
 const scale = document.querySelector("#scale");
 const voteButton = document.querySelector(".vote-button");
-let preference = null;
+const header = document.querySelector(".header > h1");
+const prompt = document.querySelector("#prompt > h1");
+let preference = "she";
 buttons.forEach((button) => {
     button.addEventListener("click", function(e) {
         preference = e.target.value;
+        updateHeader();
         // Load example from DB
         // Clear page
         welcomeMenu.remove();
         // Populate page
         voteMenu.style.display = "block";
-        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let data = JSON.parse(xhttp.responseText)[0];
+                let text = data.text; 
+                updateHeader(data.pref, data.defaultrating);
+                prompt.innerText = text;
+            }
+        };
+        xhttp.open("GET", `/prompt?pref=${preference}`, true);
+        xhttp.send();
     })
 });
+
+function updateHeader(gender, defaultRating) {
+    header.innerText = `${gender}'s a ${defaultRating} but...`;
+}
 
 voteButton.addEventListener("click", function(e) {
     // get selected rating
     // update db
     // show results
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(xhttp.responseText);
-        }
-    };
-    xhttp.open("GET", "/prompt", true);
-    xhttp.send();
 });
 
