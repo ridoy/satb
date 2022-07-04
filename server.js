@@ -83,7 +83,7 @@ app.get('/prompt', function(req, res) {
 app.get('/vote', function(req, res) {
     let promptId = req.query.promptId;
     let rating = req.query.rating;
-    let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; 
+    let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "100"]; 
     if (!ratings.includes(rating)) { // pg doesn't support col names as parameters, so sanitize the input manually
         console.log(`[ERROR] There was a problem with voting at ${req.originalUrl}. Invalid rating ${rating} was provided.`);
         return res.status(500).send("There was a problem with your request, please try again later.");

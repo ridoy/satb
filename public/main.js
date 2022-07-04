@@ -114,10 +114,13 @@ function getSeenPromptIds() {
 
 function showGraph(data, selectedRating) {
     // document.getElementById("chart").display = "block";
-    let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; 
+    let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "100"]; 
     let counts = ratings.map((rating) => data[rating]);
-    counts[selectedRating] += 1; // incremenet selected rating to reflect new vote
-    console.log(counts);
+    if (selectedRating === "100") {
+        counts[11] += 1; // incremenet selected rating to reflect new vote
+    } else {
+        counts[selectedRating] += 1;
+    }
     const chartData = {
       labels: ratings,
       datasets: [{
