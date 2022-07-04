@@ -24,7 +24,7 @@ const port = process.env.PORT;
 
 pgClient.connect();
 app.use(express.static('public'));
-app.use(sslRedirect);
+app.use(sslRedirect());
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
