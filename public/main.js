@@ -98,13 +98,9 @@ function showVoteButtons() {
 
 function showGraph(data, selectedRating) {
     // document.getElementById("chart").display = "block";
-    let ratings = [
-        '10', '9', '8', '7',
-        '6',  '5', '4', '3',
-        '2',  '1', '0'
-      ];
+    let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; 
     let counts = ratings.map((rating) => data[rating]);
-    counts[Math.abs(parseInt(selectedRating) - 10)] += 1; // incremenet selected rating to reflect new vote
+    counts[selectedRating] += 1; // incremenet selected rating to reflect new vote
     console.log(counts);
     const chartData = {
       labels: ratings,
@@ -122,7 +118,7 @@ function showGraph(data, selectedRating) {
           'aspectRatio': 1.5,
           'maintainAspectRatio': false,
           'responsive': true,
-          'reverse': true,
+          //'reverse': true,
           'plugins': {
               'legend': {
                   'display': false
@@ -173,6 +169,7 @@ function showGraph(data, selectedRating) {
                     display:false
                 },
                 ticks: {
+                    precision: 0,
                     color: "#000",
                     font: {
                         size: 20,
