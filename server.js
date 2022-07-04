@@ -66,6 +66,20 @@ app.get('/vote', function(req, res) {
     });
 });
 
+app.get('/submit', function(req, res) {
+    console.log(req.query);
+    let gender = req.query.gender;
+    let rating = req.query.rating;
+    let prompt = req.query.prompt;
+
+    let query = `insert into submissions (gender, rating, text) values ($1, $2, $3)`
+    let values = [gender, rating, prompt]
+    pgClient.query(query, values, (err, data) => {
+        if (err) throw err;
+        return res.send(data);
+    });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

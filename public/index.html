@@ -23,7 +23,7 @@
                 <button class="button preference-button" value="both">Both!</button>
                 <br/>
                 <br/>
-                <button class="button submission-button" value="submit">Click here to submit your own!</button>
+                <button class="button open-submit-menu-button" value="submit">Click here to submit your own!</button>
                 <p><a href="https://twitter.com/doyradio">Follow me on Twitter</a></p>
             </div>
 
@@ -51,14 +51,16 @@
 
             </div>
 
-            <div id="submission-menu">
+            <div id="submit-menu">
                 <h2>Submit your prompt and we will (probably) add it!</h2>
-                <select>
+                <p class="error-message"></p>
+                <p class="success-message"></p>
+                <select class="submit-menu-gender-selection">
                     <option value="she">She's</option>
                     <option value="he">He's</option>
                 </select>
                 &nbsp;a&nbsp;
-                <select>
+                <select class="submit-menu-rating-selection">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -72,7 +74,7 @@
                     <option selected value="10">10</option>
                 </select>
                 &nbsp;but...&nbsp;
-                <input id="user-submission" placeholder="something" />
+                <input id="submit-menu-prompt" placeholder="something" />
                 <br/>
                 <br/>
                 <button class="button submit-button">Submit!</button>
