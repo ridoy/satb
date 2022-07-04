@@ -4,7 +4,7 @@ const client = new Client("AAAAAAAAAAAAAAAAAAAAAMQ9dwEAAAAArPHWPc8stNm93U2PWKJZG
 async function main() {
     for(let i = 0; i <= 10; i++) {
         let resultSet = await client.tweets.tweetsRecentSearch({
-            query: `he's a ${i}`,
+            query: `she's a ${i}`,
             max_results: 100,
             expansions: ['author_id'],
             "user.fields": ['username']
