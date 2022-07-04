@@ -1,4 +1,4 @@
-He's a 10 but but kisses my hand when we meet.
+He's a 10 but but he kisses my hand when we meet.
 He's a 10 but but he only fucks to crazy frog.
 He's a 10 but but he's annoying.
 He's a 10 but but has the same love language as me.
@@ -18,7 +18,7 @@ He's a 10 but he roasts you every chance he gets.
 he’s a 10 but calls everything "based" or "cringe".
 He's a 10 but he's a cat person.
 He's a 10 but he cries when his favorite sports team loses.
-He's a 10 but his car horn soudns girly.
+He's a 10 but his car horn sounds girly.
 He's a 10 but he talks too much.
 He's a 10 but he watches anime in sub.
 He's a 10 but he has more female friends than you do.
@@ -30,23 +30,62 @@ He's a 6 but he's British.
 He’s a 10 but doesn’t get on his hands and knees to bark like a dog when you say so.
 He's a 10 but he says he's 6'1 when he's 5'11.
 
-insert into prompts (text, pref, defaultrating) values('but he lives in a pineapple under the sea.', 'he', 2);
-insert into prompts (text, pref, defaultrating) values('but he\'s British', 'he', 6);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
-insert into prompts (text, pref, defaultrating) values('', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he lives in a pineapple under the sea.', 'he', 2);
+insert into prompts (text, pref, defaultrating) values('he''s British', 'he', 6);
+insert into prompts (text, pref, defaultrating) values('he kisses my hand when we meet.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he''s annoying.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('but he only fucks to crazy frog.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('has the same love language as me.', 'he', 4);
+insert into prompts (text, pref, defaultrating) values('he''s not a lesbian.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('like he''s actually a 10 there''s no buts.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he can''t open water bottles without biting them.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he doesn''t like The Weeknd.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('his favorite movie is The Wolf of Wall Street.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he''s racist.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he only communicates with you after 10pm.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he bites his ice cream.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('likes explaining complex stuff and ends it with “its physics”.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he dances on TikTok.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he roasts you every chance he gets.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('calls everything "based" or "cringe".', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he''s a cat person.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he cries when his favorite sports team loses.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('his car horn sounds girly.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he talks too much.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he has more female friends than you do.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('doesn''t respect his mom.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he follows more than a few instagram models.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he''s an absolute idiot.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he doesn’t get on his hands and knees to bark like a dog when you say so.', 'he', 10);
+insert into prompts (text, pref, defaultrating) values('he says he''s 6''1 when he''s actually 5''11.', 'he', 10);
+
+insert into prompts (text, pref, defaultrating) values('she talks to animals like they''re gonna respond.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she always rewatches her highlights and stories just to look at herself.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she’s obsessed with bella hadid.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she’s obsessed with Justin Bieber even as an adult.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('her pee isn’t clear.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she can recognize a one direction song from the first 5 seconds of the intro.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she rewatches gossip girl and vampire diaries and refuses to watch a new show.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she wants you to feed her other 3 kids.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she listens to Bad Bunny.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she spends all her money on plushies.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she calls you bro.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she got shrines in her house and talks to dead people.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('laughs when people die in movies.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she thinks she''s a fairy living in an enchanted forest.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she celebrates the 4th of july.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('her voice sounds like Hitler''s.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('her dead relatives she brought back to life are trying to kill you.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she knows the dj personally.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she uses light mode.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she be reposting Instagram infographics.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she''s racist.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she likes pineapple on pizza.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she hasn''t deleted the other guy''s birth chart yet.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she can''t park.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she isn''t forklift certified.', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('she thinks Friends is better than Seinfeld', 'she', '10');
+insert into prompts (text, pref, defaultrating) values('speaks in third person', 'she', '8');
+insert into prompts (text, pref, defaultrating) values('she’s a Seahawks fan.', 'she', '5');
+insert into prompts (text, pref, defaultrating) values('she loves Drake.', 'she', '7');
+insert into prompts (text, pref, defaultrating) values('says she''s a "burnt out gifted kid".', 'she', '9');

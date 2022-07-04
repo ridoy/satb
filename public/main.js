@@ -13,30 +13,34 @@ console.log("Script loaded");
 // TODO
 // submit your own prompt
 //   server: store prompt
-// show graphs
-// scrape twitter for starter data
 const header = document.querySelector(".header > h1");
 const scale = document.querySelector("#scale");
 const prompt = document.querySelector("#prompt > h1");
 const welcomeMenu = document.querySelector("#welcome-menu");
 const voteMenu = document.querySelector("#vote-menu");
+const submissionMenu = document.querySelector("#submission-menu");
 const prefButtons = document.querySelectorAll(".preference-button");
 const voteButtons = document.querySelectorAll(".vote-button");
 const nextButton = document.querySelector(".next-button");
+const submissionButton = document.querySelector(".submission-button");
 
 let preference = null;
 let currentPromptId = null;
 let currentPromptData = null;
 let chart = null;
 
+submissionButton.addEventListener("click", (e) => {
+    welcomeMenu.style.display = "none";
+    submissionMenu.style.display = "block";
+})
+
 prefButtons.forEach((prefButton) => {
     prefButton.addEventListener("click", function(e) {
         preference = e.target.value || "both";
-        loadPrompt();
         // Load example from DB
         loadPrompt();
         // Clear page
-        welcomeMenu.remove();
+        welcomeMenu.style.display = "none";
         // Populate page
         voteMenu.style.display = "block";
     })

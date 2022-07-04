@@ -10,12 +10,6 @@ body {
     text-align: center;
 }
 
-hr {
-    height: 1px;
-    border: none;
-    background-color: lightpink;
-}
-
 h1 {
     font-size: 36px;
 }
@@ -27,6 +21,9 @@ p {
 #welcome-menu {
     text-align: center;
     font-size: 30px;
+    margin: 0 auto;
+    max-width: 800px;
+    width: auto;
 }
 
 .button {
@@ -49,6 +46,11 @@ border: 4px solid black;
 color: black;
 cursor: pointer;
     
+}
+
+.submission-button {
+    padding: 10px;
+    font-size: 20px;
 }
 
 #vote-menu {
@@ -83,4 +85,20 @@ label {
     height: 400px;
     margin: 0 auto;
     margin-bottom: 30px;
+}
+
+#submission-menu {
+    display: none;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input {
+    font-family: 'Patrick Hand', sans serif;
+    font-size: 20px;
+}
+select {
+    font-family: 'Patrick Hand', sans serif;
+    font-size: 20px;
 }

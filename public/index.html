@@ -21,6 +21,10 @@
                 <button class="button preference-button" value="she">"She's a 10 but"</button>
                 <button class="button preference-button" value="he">"He's a 10 but"</button>
                 <button class="button preference-button" value="both">Both!</button>
+                <br/>
+                <br/>
+                <button class="button submission-button" value="submit">Click here to submit your own!</button>
+                <p><a href="https://twitter.com/doyradio">Follow me on Twitter</a></p>
             </div>
 
             <div id="vote-menu">
@@ -40,11 +44,38 @@
                     <button class="button vote-button" value="1">1</button>
                     <button class="button vote-button" value="0">0</button>
                 </div>
+                <button class="button next-button">Next &gt;</button>
                 <div id="chart-container">
                     <canvas id="chart"></canvas>
                 </div>
-                <button class="button next-button">Next &gt;</button>
 
+            </div>
+
+            <div id="submission-menu">
+                <h2>Submit your prompt and we will (probably) add it!</h2>
+                <select>
+                    <option value="she">She's</option>
+                    <option value="he">He's</option>
+                </select>
+                &nbsp;a&nbsp;
+                <select>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option selected value="10">10</option>
+                </select>
+                &nbsp;but...&nbsp;
+                <input id="user-submission" placeholder="something" />
+                <br/>
+                <br/>
+                <button class="button submit-button">Submit!</button>
             </div>
 
         </div>
