@@ -1,18 +1,5 @@
-// Load preferences... "she's a 10 but... he's a 10 but... both"
-//
-
-/*
- * Load page. Get pref. Pick random from DB. Show prompt, scale, and results. Write vote to DB.
- * Show results as histogram with numbers or percents.
- * Load page. Goes to submit. "Show she's a {num dropdown} but... " and textarea. Submit. Write to DB.
- *
- */
 console.log("Script loaded");
 
-
-// TODO
-// submit your own prompt
-//   server: store prompt
 const header = document.querySelector(".header > h1");
 const scale = document.querySelector("#scale");
 const prompt = document.querySelector("#prompt > h1");
