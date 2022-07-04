@@ -218,10 +218,11 @@ function loadPrompt() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (JSON.parse(xhttp.responseText).length === 0) {
-                voteCompletionMessage.innerText = "Looks like we're out of questions for you! We're working hard on adding new ones, so check back later."
+                voteCompletionMessage.innerText = 
+                    "Looks like we're out of questions for you! We're working hard on adding new ones, so check back later."
                 document.getElementById("scale").remove();
                 nextButton.remove();
-                return console.log('uh oh you finished it all');
+                return;
             }
             let data = JSON.parse(xhttp.responseText)[0];
             currentPromptData = data;
@@ -234,6 +235,11 @@ function loadPrompt() {
             updateSeenPromptIds(currentPromptId);
         }
     };
-    xhttp.open("GET", `/prompt?pref=${preference}&seen=${getSeenPromptIds()}`, true);
+    let url =  `/prompt?pref=${preference}`;
+    let seenIds = getSeenPromptIds();
+    if (seenIds) {
+        url += `&seen=${seenIds}`;
+    }
+    xhttp.open("GET", url, true);
     xhttp.send();
 }

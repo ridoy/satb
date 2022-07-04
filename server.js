@@ -35,25 +35,44 @@ function addPrefToQuery(preference) {
     return "pref=$1 and";
 }
 
+function queryIdExclusionBit(params, noPref) {
+    if (params.length === 0) return "";
+    if (noPref) return `where id not in (${params.join(',')})`;
+    return `and id not in (${params.join(',')})`;
+}
 app.get('/prompt', function(req, res) {
     let preference = req.query.pref;
     if (!preference) {
         console.log("[ERROR] For some reason req.query.pref was not defined.");
         preference = "both";
     }
-    let seenIds = req.query.seen.split(",").map((id) => parseInt(id));
-    console.log(seenIds);
+    let seenIds = [];
     let params = [];
-    for (let i = 2; i < seenIds.length + 2; i++) {
-        params.push('$' + i);
+    if (req.query.seen) {
+        seenIds = req.query.seen.split(",").map((id) => parseInt(id));
+        console.log(seenIds);
+        if (preference === "both") {
+            for (let i = 1; i < seenIds.length + 1; i++) {
+                params.push('$' + i);
+            }
+        } else {
+            for (let i = 2; i < seenIds.length + 2; i++) {
+                params.push('$' + i);
+            }
+        }
     }
+    console.log(seenIds);
     // I know random() is bad but the database is small atm.
-    let query = `select * from prompts where pref=$1 and id not in (${params.join(',')}) order by random() limit 1;`; 
+    let query = `select * from prompts where pref=$1 ${queryIdExclusionBit(params, false)} order by random() limit 1;`; 
+    console.log(query);
     let values = [preference].concat(seenIds);
+    console.log(values);
  
     if (preference === "both") {
-        query = `select * from prompts order by random() limit 1;`;
+        query = `select * from prompts ${queryIdExclusionBit(params, true)} order by random() limit 1;`;
+        
         values = seenIds;
+        console.log(query, values)
     }
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
