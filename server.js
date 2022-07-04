@@ -9,6 +9,7 @@
  */ 
 require('dotenv').config()
 
+const sslRedirect = require('heroku-ssl-redirect');
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -23,6 +24,7 @@ const port = process.env.PORT;
 
 pgClient.connect();
 app.use(express.static('public'));
+app.use(sslRedirect);
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
