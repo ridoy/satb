@@ -167,6 +167,7 @@ function showGraph(data, selectedRating) {
                     display:false
                 },
                 ticks: {
+                    autoSkip: false, // Don't skip ratings when ona  small screen, squeeze em
                     color: "#000",
                     font: {
                         size: 20,
