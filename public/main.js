@@ -17,6 +17,7 @@ const submitMenuRatingSelection = document.querySelector(".submit-menu-rating-se
 const submitMenuPrompt = document.querySelector("#submit-menu-prompt");
 const submitMenuSuccessMessage = document.querySelector("#submit-menu > .success-message");
 const submitMenuErrorMessage = document.querySelector("#submit-menu > .error-message");
+const voteCompletionMessage = document.querySelector("#completion-message");
 
 let preference = null;
 let currentPromptId = null;
@@ -94,6 +95,21 @@ function showVoteButtons() {
     voteButtons.forEach((voteButton) => {
         voteButton.style.display = "inline-block";
     })
+}
+
+// Store prompts we've seen so there's no repeats
+function updateSeenPromptIds(newId) {
+    let seen = localStorage.getItem('seen');
+    if (!seen) {
+        seen = `${newId}`;
+    } else {
+        seen += `,${newId}`;
+    }
+    localStorage.setItem('seen', seen);
+}
+
+function getSeenPromptIds() {
+    return localStorage.getItem('seen');
 }
 
 function showGraph(data, selectedRating) {
@@ -201,6 +217,12 @@ function loadPrompt() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            if (JSON.parse(xhttp.responseText).length === 0) {
+                voteCompletionMessage.innerText = "Looks like we're out of questions for you! We're working hard on adding new ones, so check back later."
+                document.getElementById("scale").remove();
+                nextButton.remove();
+                return console.log('uh oh you finished it all');
+            }
             let data = JSON.parse(xhttp.responseText)[0];
             currentPromptData = data;
             let text = data.text;
@@ -209,8 +231,9 @@ function loadPrompt() {
             showVoteButtons();
             //document.getElementById("chart").display = "none";
             prompt.innerText = text;
+            updateSeenPromptIds(currentPromptId);
         }
     };
-    xhttp.open("GET", `/prompt?pref=${preference}`, true);
+    xhttp.open("GET", `/prompt?pref=${preference}&seen=${getSeenPromptIds()}`, true);
     xhttp.send();
 }

@@ -28,17 +28,32 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
+function addPrefToQuery(preference) {
+    if (preference === "both") {
+        return "";
+    }
+    return "pref=$1 and";
+}
+
 app.get('/prompt', function(req, res) {
     let preference = req.query.pref;
     if (!preference) {
-        console.log("[ERROR] For some reason req.query.pref was not defined.")
+        console.log("[ERROR] For some reason req.query.pref was not defined.");
+        preference = "both";
     }
-    let query = `select * from prompts where pref=$1 order by random() limit 1;`; // I know this is bad but the database is small atm.
-    let values = [preference];
+    let seenIds = req.query.seen.split(",").map((id) => parseInt(id));
+    console.log(seenIds);
+    let params = [];
+    for (let i = 2; i < seenIds.length + 2; i++) {
+        params.push('$' + i);
+    }
+    // I know random() is bad but the database is small atm.
+    let query = `select * from prompts where pref=$1 and id not in (${params.join(',')}) order by random() limit 1;`; 
+    let values = [preference].concat(seenIds);
  
     if (preference === "both") {
         query = `select * from prompts order by random() limit 1;`;
-        values = [];
+        values = seenIds;
     }
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;

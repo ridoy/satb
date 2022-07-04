@@ -55,6 +55,7 @@ cursor: pointer;
 
 #vote-menu {
     display: none;
+    text-align: center;
 }
 
 #prompt {
