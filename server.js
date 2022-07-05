@@ -75,7 +75,7 @@ app.get('/prompt', function(req, res) {
     }
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
-        if (data.rows[0].text) {
+        if (data.rows[0] && data.rows[0].text) {
             console.log("User with IP " + ip + " given prompt: " + data.rows[0].text);
         } else {
             console.log("User with IP " + ip + " has seen all prompts, none returned");
@@ -102,7 +102,7 @@ app.get('/vote', function(req, res) {
     let values = [promptId];
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
-        if (data.rows[0].text) {
+        if (data.rows[0] && data.rows[0].text) {
             console.log("User with IP " + ip + " voted " + rating + " on: " + data.rows[0].text);
         }
         return res.send(data);
