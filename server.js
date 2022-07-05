@@ -41,6 +41,8 @@ function queryIdExclusionBit(params, noPref) {
     return `and id not in (${params.join(',')})`;
 }
 app.get('/prompt', function(req, res) {
+    let ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
+        req.socket.remoteAddress;
     let preference = req.query.pref;
     if (!preference) {
         console.log("[ERROR] For some reason req.query.pref was not defined.");
@@ -50,7 +52,6 @@ app.get('/prompt', function(req, res) {
     let params = [];
     if (req.query.seen) {
         seenIds = req.query.seen.split(",").map((id) => parseInt(id));
-        console.log(seenIds);
         if (preference === "both") {
             for (let i = 1; i < seenIds.length + 1; i++) {
                 params.push('$' + i);
@@ -61,26 +62,31 @@ app.get('/prompt', function(req, res) {
             }
         }
     }
-    console.log(seenIds);
     // I know random() is bad but the database is small atm.
     let query = `select * from prompts where pref=$1 ${queryIdExclusionBit(params, false)} order by random() limit 1;`; 
-    console.log(query);
+    //console.log(query);
     let values = [preference].concat(seenIds);
-    console.log(values);
  
     if (preference === "both") {
         query = `select * from prompts ${queryIdExclusionBit(params, true)} order by random() limit 1;`;
         
         values = seenIds;
-        console.log(query, values)
+        //console.log(query)
     }
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
+        if (data.rows[0].text) {
+            console.log("User with IP " + ip + " given prompt: " + data.rows[0].text);
+        } else {
+            console.log("User with IP " + ip + " has seen all prompts, none returned");
+        }
         return res.send(data.rows);
     });
 });
 
 app.get('/vote', function(req, res) {
+    let ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
+         req.socket.remoteAddress;
     let promptId = req.query.promptId;
     let rating = req.query.rating;
     let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "100"]; 
@@ -92,16 +98,20 @@ app.get('/vote', function(req, res) {
         console.log(`[ERROR] There was a problem with voting at ${req.originalUrl}. Either promptId or rating are undefined: ${promptId} ${rating}`);
         return res.status(500).send("There was a problem with your request, please try again later.");
     }
-    let query = `UPDATE prompts set "${rating}" = "${rating}" + 1 where id=$1`;
+    let query = `UPDATE prompts set "${rating}" = "${rating}" + 1 where id=$1 returning prompts.text`;
     let values = [promptId];
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
+        if (data.rows[0].text) {
+            console.log("User with IP " + ip + " voted " + rating + " on: " + data.rows[0].text);
+        }
         return res.send(data);
     });
 });
 
 app.get('/submit', function(req, res) {
-    console.log(req.query);
+    let ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
+         req.socket.remoteAddress;
     let gender = req.query.gender;
     let rating = req.query.rating;
     let prompt = req.query.prompt;
@@ -110,6 +120,7 @@ app.get('/submit', function(req, res) {
     let values = [gender, rating, prompt]
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
+        console.log("User with IP " + ip + " submitted " + prompt);
         return res.send(data);
     });
 });
