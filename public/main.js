@@ -23,6 +23,7 @@ let preference = null;
 let currentPromptId = null;
 let currentPromptData = null;
 let chart = null;
+let numVotesThisSession = 0;
 
 openSubmitMenuButton.addEventListener("click", (e) => {
     welcomeMenu.style.display = "none";
@@ -71,6 +72,8 @@ voteButtons.forEach((voteButton) => {
         let selectedRating = e.target.value;
         var xhttp = new XMLHttpRequest();
         nextButton.style.display = "block";
+        playSound();
+        numVotesThisSession++;
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 // Confirmation message, show next
@@ -83,6 +86,14 @@ voteButtons.forEach((voteButton) => {
         xhttp.send();
     });
 });
+
+function playSound() {
+    let sounds = ["g3", "a3", "b3", "c4", "d4", "e4", "fsharp4", "g4"];
+    // let soundToPlay = "https://www.shesatenbut.org/audio" + sounds[numVotesThisSession % 8] + ".mp3";
+    let soundToPlay = "audio/" + sounds[numVotesThisSession % 8] + ".mp3";
+    let audio = new Audio(soundToPlay);
+    audio.play();
+}
 
 function hideVoteButtons() {
     voteButtons.forEach((voteButton) => {
@@ -210,6 +221,10 @@ nextButton.addEventListener("click", (e) => {
     chart.destroy();
     loadPrompt();
 });
+
+// skipButton.addEventListener("click", (e) => {
+//     loadPrompt();
+// })
 
 
 function updateHeader(gender, defaultRating) {

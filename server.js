@@ -125,6 +125,10 @@ app.get('/submit', function(req, res) {
     });
 });
 
+app.get('/xmlrpc.php', function(req, res) {
+    return res.send("Eat a dick");
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
