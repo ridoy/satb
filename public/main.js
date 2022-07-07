@@ -70,7 +70,7 @@ prefButtons.forEach((prefButton) => {
 
 voteButtons.forEach((voteButton) => {
     voteButton.addEventListener("click", (e) => {
-        let promptId = null;
+        let promptId = currentPromptId;
         let selectedRating = e.target.value;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
