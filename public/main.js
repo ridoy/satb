@@ -11,6 +11,7 @@ const voteButtons = document.querySelectorAll(".vote-button");
 const nextButton = document.querySelector(".next-button");
 const openSubmitMenuButton = document.querySelector(".open-submit-menu-button");
 const submitButton = document.querySelector(".submit-button");
+const copyLinkButton = document.querySelector(".share-with-a-friend-link");
 
 const submitMenuGenderSelection = document.querySelector(".submit-menu-gender-selection");
 const submitMenuRatingSelection = document.querySelector(".submit-menu-rating-selection");
@@ -225,6 +226,11 @@ nextButton.addEventListener("click", (e) => {
 // skipButton.addEventListener("click", (e) => {
 //     loadPrompt();
 // })
+
+copyLinkButton.addEventListener('click', function() {
+    gtag('event', 'share');
+    navigator.clipboard.writeText("https://www.shesatenbut.org");
+});
 
 
 function updateHeader(gender, defaultRating) {

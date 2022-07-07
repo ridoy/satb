@@ -110,3 +110,16 @@ select {
 .success-message {
     color: #378937;
 }
+
+.share-with-a-friend {
+    text-align: center;
+}
+.share-with-a-friend-link {
+    color: #f7637f;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+}
+.share-with-a-friend-link:hover {
+    color: black;
+}
