@@ -89,6 +89,9 @@ app.get('/vote', function(req, res) {
          req.socket.remoteAddress;
     let promptId = req.query.promptId;
     let rating = req.query.rating;
+    if (!promptId || !rating) {
+        return res.status(400).send("Something went wrong, please try again.");
+    }
     let ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "100"]; 
     if (!ratings.includes(rating)) { // pg doesn't support col names as parameters, so sanitize the input manually
         console.log(`[ERROR] There was a problem with voting at ${req.originalUrl}. Invalid rating ${rating} was provided.`);
@@ -124,10 +127,6 @@ app.get('/submit', function(req, res) {
         return res.send(data);
     });
 });
-
-app.get('/xmlrpc.php', function(req, res) {
-    return res.send("Eat a dick");
-})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
