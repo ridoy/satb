@@ -19,6 +19,7 @@ const submitMenuPrompt = document.querySelector("#submit-menu-prompt");
 const submitMenuSuccessMessage = document.querySelector("#submit-menu > .success-message");
 const submitMenuErrorMessage = document.querySelector("#submit-menu > .error-message");
 const voteCompletionMessage = document.querySelector("#completion-message");
+const voteMenuErrorMessage = document.querySelector("#vote-menu > .error-message");
 
 let preference = null;
 let currentPromptId = null;
@@ -69,17 +70,19 @@ prefButtons.forEach((prefButton) => {
 
 voteButtons.forEach((voteButton) => {
     voteButton.addEventListener("click", (e) => {
-        let promptId = currentPromptId;
+        let promptId = null;
         let selectedRating = e.target.value;
         var xhttp = new XMLHttpRequest();
-        nextButton.style.display = "block";
-        playSound();
-        numVotesThisSession++;
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // Confirmation message, show next
+                voteMenuErrorMessage.innerText = "";
+                nextButton.style.display = "block";
+                playSound();
+                numVotesThisSession++;
                 hideVoteButtons();
                 showGraph(currentPromptData, selectedRating);
+            } else if (this.status == 400) {
+                voteMenuErrorMessage.innerText = "There was an error, please try again.";
             }
             // TODO handle error
         };
