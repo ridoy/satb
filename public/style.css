@@ -38,7 +38,8 @@ p {
     font-size: 24px;
     color: #f7637f;
     transition: 0.2s;
-
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .button:hover {
@@ -86,6 +87,8 @@ label {
     height: 400px;
     margin: 0 auto;
     margin-bottom: 30px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 #submit-menu {
