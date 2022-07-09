@@ -120,7 +120,6 @@ function showGraph(data, selectedRating) {
           'aspectRatio': 1.5,
           'maintainAspectRatio': false,
           'responsive': true,
-          //'reverse': true,
           'plugins': {
               'legend': {
                   'display': false

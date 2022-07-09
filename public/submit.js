@@ -1,7 +1,5 @@
 console.log("Script loaded");
 
-const header = document.querySelector(".header > h1");
-const submitMenu = document.querySelector("#submit-menu");
 const submitButton = document.querySelector(".submit-button");
 const homeButton = document.querySelector(".home-button");
 
@@ -12,12 +10,6 @@ const submitMenuSuccessMessage = document.querySelector("#submit-menu > .success
 const submitMenuErrorMessage = document.querySelector("#submit-menu > .error-message");
 const voteCompletionMessage = document.querySelector("#completion-message");
 const voteMenuErrorMessage = document.querySelector("#vote-menu > .error-message");
-
-let preference = null;
-let currentPromptId = null;
-let currentPromptData = null;
-let chart = null;
-let numVotesThisSession = 0;
 
 homeButton.addEventListener("click", (e) => {
     window.location.href = "/";

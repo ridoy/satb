@@ -43,10 +43,9 @@ p {
 }
 
 .button:hover {
-border: 4px solid black;
-color: black;
-cursor: pointer;
-    
+    border: 4px solid black;
+    color: black;
+    cursor: pointer;
 }
 
 .small-button {
