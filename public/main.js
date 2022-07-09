@@ -5,19 +5,12 @@ const scale = document.querySelector("#scale");
 const prompt = document.querySelector("#prompt > h1");
 const welcomeMenu = document.querySelector("#welcome-menu");
 const voteMenu = document.querySelector("#vote-menu");
-const submitMenu = document.querySelector("#submit-menu");
 const prefButtons = document.querySelectorAll(".preference-button");
 const voteButtons = document.querySelectorAll(".vote-button");
 const nextButton = document.querySelector(".next-button");
 const openSubmitMenuButton = document.querySelector(".open-submit-menu-button");
-const submitButton = document.querySelector(".submit-button");
 const copyLinkButton = document.querySelector(".share-with-a-friend-link");
 
-const submitMenuGenderSelection = document.querySelector(".submit-menu-gender-selection");
-const submitMenuRatingSelection = document.querySelector(".submit-menu-rating-selection");
-const submitMenuPrompt = document.querySelector("#submit-menu-prompt");
-const submitMenuSuccessMessage = document.querySelector("#submit-menu > .success-message");
-const submitMenuErrorMessage = document.querySelector("#submit-menu > .error-message");
 const voteCompletionMessage = document.querySelector("#completion-message");
 const voteMenuErrorMessage = document.querySelector("#vote-menu > .error-message");
 
@@ -28,32 +21,7 @@ let chart = null;
 let numVotesThisSession = 0;
 
 openSubmitMenuButton.addEventListener("click", (e) => {
-    welcomeMenu.style.display = "none";
-    submitMenu.style.display = "block";
-})
-
-submitButton.addEventListener("click", (e) => {
-    submitMenuSuccessMessage.innerText = "";
-    let gender = submitMenuGenderSelection.value;
-    let rating = submitMenuRatingSelection.value;
-    let prompt = submitMenuPrompt.value;
-    if (!gender || !rating || !prompt) { 
-        submitMenuErrorMessage.innerText = "Fill out all the fields and try again :D";
-        return;
-    }
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            // Confirmation message, show next
-            submitMenuPrompt.value = "";
-            submitMenuErrorMessage.innerText = "";
-            submitMenuSuccessMessage.innerText = "We got it! Wanna submit another?"
-        }
-        // TODO handle error
-    };
-    xhttp.open("GET", `/submit?prompt=${prompt}&gender=${gender}&rating=${rating}`, true);
-    xhttp.send();
+    window.location.href = "/submit.html";
 })
 
 prefButtons.forEach((prefButton) => {

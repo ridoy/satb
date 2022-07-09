@@ -42,53 +42,38 @@
         </div>
 
         <div class="content">
-
-            <div id="welcome-menu">
-                Select your preference:
-                <br/>
-                <br/>
-                <button class="button preference-button" value="she">"She's a 10 but"</button>
-                <button class="button preference-button" value="he">"He's a 10 but"</button>
-                <button class="button preference-button" value="both">Both!</button>
-                <br/>
-                <button class="button small-button open-submit-menu-button" value="submit">Click here to submit your own!</button>
-                <p><a href="https://twitter.com/doyradio">Follow me on Twitter</a></p>
-            </div>
-
-            <div id="vote-menu">
-
-
-                <div id="prompt"><h1></h1></div>
-                <p id="completion-message"></p>
+            <div id="submit-menu">
+                <button class="button small-button home-button">&lt; Back to Homepage</button>
+                <h2>Submit your prompt and we will (probably) add it!</h2>
+                
                 <p class="error-message"></p>
-
-                <div class="share-with-a-friend">
-                    <span class="share-with-a-friend-link">Copy link to share with friends</span>
-                </div>
-                <div id="scale">
-
-                    <button class="button vote-button" value="0">0</button>
-                    <button class="button vote-button" value="1">1</button>
-                    <button class="button vote-button" value="2">2</button>
-                    <button class="button vote-button" value="3">3</button>
-                    <button class="button vote-button" value="4">4</button>
-                    <button class="button vote-button" value="5">5</button>
-                    <button class="button vote-button" value="6">6</button>
-                    <button class="button vote-button" value="7">7</button>
-                    <button class="button vote-button" value="8">8</button>
-                    <button class="button vote-button" value="9">9</button>
-                    <button class="button vote-button" value="10">10</button>
-                    <button class="button vote-button" value="100">100</button>
-                    
-                </div>
-                <button class="button next-button">Next &gt;</button>
-                <div id="chart-container">
-                    <canvas id="chart"></canvas>
-                </div>
-
+                <p class="success-message"></p>
+                <select class="submit-menu-gender-selection">
+                    <option value="she">She's</option>
+                    <option value="he">He's</option>
+                </select>
+                &nbsp;a&nbsp;
+                <select class="submit-menu-rating-selection">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option selected value="10">10</option>
+                </select>
+                &nbsp;but...&nbsp;
+                <input id="submit-menu-prompt" placeholder="something" />
+                <br/>
+                <br/>
+                <button class="button submit-button">Submit!</button>
             </div>
         </div>
 
-        <script src="main.js"></script>
+        <script src="submit.js"></script>
     </body>
 </html>

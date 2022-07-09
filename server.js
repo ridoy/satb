@@ -71,7 +71,7 @@ app.get('/prompt', function(req, res) {
         query = `select * from prompts ${queryIdExclusionBit(params, true)} order by random() limit 1;`;
         
         values = seenIds;
-        //console.log(query)
+        // console.log(query)
     }
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
