@@ -8,7 +8,6 @@ homeButton.addEventListener("click", (e) => {
     window.location.href = "/";
 })
 
-// TODO add google analytics event
 leaderboardButtons.forEach((button) => {
     button.addEventListener("click", function(e) {
         let selectedButton = document.querySelector(".button-selected");
@@ -36,6 +35,9 @@ leaderboardButtons.forEach((button) => {
 });
 
 function getAndShowLeaderboard(gender, rating) {
+    gtag('event', 'showLeaderboard', {
+        'event_label': `gender: ${gender}, rating: ${0}`
+    })
     let data = getLeaderboard(gender, rating)
         .then((data) => {
             showLeaderboard(data);
