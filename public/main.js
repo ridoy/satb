@@ -9,6 +9,7 @@ const prefButtons = document.querySelectorAll(".preference-button");
 const voteButtons = document.querySelectorAll(".vote-button");
 const nextButton = document.querySelector(".next-button");
 const openSubmitMenuButton = document.querySelector(".open-submit-menu-button");
+const openLeaderboardButton = document.querySelector(".open-leaderboard-button");
 const copyLinkButton = document.querySelector(".share-with-a-friend-link");
 
 const voteCompletionMessage = document.querySelector("#completion-message");
@@ -22,7 +23,11 @@ let numVotesThisSession = 0;
 
 openSubmitMenuButton.addEventListener("click", (e) => {
     window.location.href = "/submit.html";
-})
+});
+
+openLeaderboardButton.addEventListener("click", (e) => {
+    window.location.href = "/leaderboard.html";
+});
 
 prefButtons.forEach((prefButton) => {
     prefButton.addEventListener("click", function(e) {

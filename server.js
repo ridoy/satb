@@ -40,6 +40,7 @@ function queryIdExclusionBit(params, noPref) {
     if (noPref) return `where id not in (${params.join(',')})`;
     return `and id not in (${params.join(',')})`;
 }
+
 app.get('/prompt', function(req, res) {
     let ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
         req.socket.remoteAddress;
@@ -64,14 +65,10 @@ app.get('/prompt', function(req, res) {
     }
     // I know random() is bad but the database is small atm.
     let query = `select * from prompts where pref=$1 ${queryIdExclusionBit(params, false)} order by random() limit 1;`; 
-    //console.log(query);
     let values = [preference].concat(seenIds);
- 
     if (preference === "both") {
         query = `select * from prompts ${queryIdExclusionBit(params, true)} order by random() limit 1;`;
-        
         values = seenIds;
-        // console.log(query)
     }
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
@@ -127,6 +124,33 @@ app.get('/submit', function(req, res) {
         return res.send(data);
     });
 });
+
+app.get('/leaderboard', function(req, res) {
+    if (req.query.gender === "null" || req.query.rating === "null") {
+        return res.status(400).send("Bad request, missing gender or rating param");
+    }
+    let ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
+        req.socket.remoteAddress;
+    let gender = req.query.pref;
+    let rating = req.query.rating;
+    let query;
+    if (rating === "10") {
+        query = `select text, "10" as rating from prompts where pref=$1 order by "10" desc limit 40`;
+    } else if (rating === "0") {
+        query = `select text, "0" as rating from prompts where pref=$1 order by "0" desc limit 40`;
+    } else if (rating === "100") {
+        query = `select text, "100" as rating from prompts where pref=$1 order by "100" desc limit 40`;
+    } else {
+        return res.status(400).send("Bad request, rating param must be 0, 10, or 100.");     
+    }
+    let values = [gender];
+    console.log(query, gender);
+    pgClient.query(query, values, (err, data) => {
+        if (err) throw err;
+        console.log("User with IP " + ip + " requested leaderboard for " + gender + " " + rating);
+        return res.send(data.rows);
+    });
+}) 
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
