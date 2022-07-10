@@ -73,7 +73,7 @@ app.get('/prompt', function(req, res) {
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
         if (data.rows[0] && data.rows[0].text) {
-            console.log("User with IP " + ip + " given prompt: " + data.rows[0].text);
+            console.log(`User with IP ${ip} given prompt: "${preference}'s a ${data.rows[0].defaultrating} but ${data.rows[0].text}"`);
         } else {
             console.log("User with IP " + ip + " has seen all prompts, none returned");
         }
@@ -98,12 +98,12 @@ app.get('/vote', function(req, res) {
         console.log(`[ERROR] There was a problem with voting at ${req.originalUrl}. Either promptId or rating are undefined: ${promptId} ${rating}`);
         return res.status(500).send("There was a problem with your request, please try again later.");
     }
-    let query = `UPDATE prompts set "${rating}" = "${rating}" + 1 where id=$1 returning prompts.text`;
+    let query = `UPDATE prompts set "${rating}" = "${rating}" + 1 where id=$1 returning prompts.text, prompts.defaultrating`;
     let values = [promptId];
     pgClient.query(query, values, (err, data) => {
         if (err) throw err;
         if (data.rows[0] && data.rows[0].text) {
-            console.log("User with IP " + ip + " voted " + rating + " on: " + data.rows[0].text);
+            console.log(`User with IP ${ip} voted ${rating} on: "${data.rows[0].text}" (default rating ${data.rows[0].defaultrating})`);
         }
         return res.send(data);
     });
