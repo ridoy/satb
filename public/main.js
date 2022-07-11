@@ -218,6 +218,9 @@ function loadPrompt() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (JSON.parse(xhttp.responseText).length === 0) {
+                gtag('event', 'seenAllPrompts', {
+                    'event_label': `idk what to put here tbh`
+                });
                 voteCompletionMessage.innerText = 
                     "Looks like we're out of questions for you! We're working hard on adding new ones, so check back later."
                 document.getElementById("scale").remove();
