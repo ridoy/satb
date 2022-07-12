@@ -40,7 +40,7 @@ function getAndShowLeaderboard(gender, rating) {
     })
     let data = getLeaderboard(gender, rating)
         .then((data) => {
-            showLeaderboard(data);
+            showLeaderboard(data, rating);
         });
 }
 
@@ -64,13 +64,19 @@ function getLeaderboard(gender, rating) {
     })
 }
 
-function showLeaderboard(data) {
+function showLeaderboard(data, rating) {
     let oldLeaderboardItems = document.querySelectorAll(".leaderboard-item");
     oldLeaderboardItems.forEach(item => item.remove());
     // create els and inject
     for (let row of data) {
         let leaderboardItem = document.createElement('div');
-        leaderboardItem.innerText = "(" + row.rating + " votes) " + row.text;
+        let leaderboardItemPrompt = document.createElement('span');
+        let leaderboardItemVoteCount = document.createElement('span');
+        leaderboardItemPrompt.innerText = `${(row.pref == "he") ? "He" : "She"}'s a ${row.defaultrating} but ${row.text}`;
+        leaderboardItemVoteCount.innerText = `${row.count} people voted ${rating}`;
+        leaderboardItemVoteCount.classList += " leaderboard-item-vote-count";
+        leaderboardItem.appendChild(leaderboardItemPrompt);
+        leaderboardItem.appendChild(leaderboardItemVoteCount);
         leaderboardItem.setAttribute("class", "leaderboard-item");
         leaderboard.appendChild(leaderboardItem);
     }

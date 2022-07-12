@@ -135,11 +135,11 @@ app.get('/leaderboard', function(req, res) {
     let rating = req.query.rating;
     let query;
     if (rating === "10") {
-        query = `select text, "10" as rating from prompts where pref=$1 order by "10" desc limit 40`;
+        query = `select text, "10" as count, defaultrating, pref from prompts where pref=$1 order by "10" desc limit 20`;
     } else if (rating === "0") {
-        query = `select text, "0" as rating from prompts where pref=$1 order by "0" desc limit 40`;
+        query = `select text, "0" as count, defaultrating, pref from prompts where pref=$1 order by "0" desc limit 20`;
     } else if (rating === "100") {
-        query = `select text, "100" as rating from prompts where pref=$1 order by "100" desc limit 40`;
+        query = `select text, "100" as count, defaultrating, pref from prompts where pref=$1 order by "100" desc limit 20`;
     } else {
         return res.status(400).send("Bad request, rating param must be 0, 10, or 100.");     
     }
